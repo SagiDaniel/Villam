@@ -5,45 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
-    <title>Bootstrap Example</title>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="main.css">
+    <title>Villam futok</title>
+   
   </head>
-  <body class="p-3 m-0 border-5 bd-example m-0 border-0">
-
-    <nav class="navbar navbar-expand-lg sticky-top ">
+  <body class="p-2 m-2 border-5 bd-example m-0 border-0"> 
+    <!--navbar-->
+    <nav class=" p-3 navbar navbar-dark bg-dark fixed-top">
       <div class="container-fluid">
-        <a class="navbar-brand justify-content-center" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav justify-content-center">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Features</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Pricing</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <nav class="navbar navbar-dark bg-dark fixed-top">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Offcanvas dark navbar</a>
+        <a class="navbar-brand" href="index.php">Villám futók</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
           <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Dark offcanvas</h5>
+            <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Villám futók</h5>
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
           <div class="offcanvas-body">
@@ -68,14 +44,158 @@
                 </ul>
               </li>
             </ul>
-            <form class="d-flex mt-3" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-success" type="submit">Search</button>
+            <form class="d-flex  mt-3 container-fluid">
+            
+              <button type="button" class="btn btn-primary d-flex justify-content-start "  data-bs-toggle="modal" data-bs-target="#bejeletkezes">Bejelentezés</button> 
+              <button type="button" class="btn btn-secondary d-flex justify-content-end" data-bs-toggle="modal" data-bs-target="#regisztacio">Regisztráció</button>
+            
             </form>
           </div>
         </div>
       </div>
     </nav>
-
+     <!--login-->asd
+     <div class="modal" id="bejeletkezes">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title">Bejelentkezés</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="email"class="form-label">Email:</label>
+                <input type="email" id="emaillogin" name="emaillogin" class="form-control" required>  
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Jelszó:</label>
+                <input type="password" id="password" class="form-control" name="password" required>
+              </div>   
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary mb-3" onclick="login()">Bejelentkezés</button>
+            <button type="button" class="btn btn-danger mb-3" data-bs-dismiss="modal">Bezárás</button>
+          </div>
+        </div>
+      </div>
+     </div>
+     <!--registration-->
+     <div class="modal" id="regisztacio">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+              <h2>Regisztráció</h2>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+              <form id="registrationForm" class="needs-validation" novalidate>
+                  <div class="mb-3">
+                      <div class="row">
+                          <div class="col">
+                              <label for="nev" class="form-label">Teljes név:</label>
+                              <input type="text" id="nev" name="nev" class="form-control" pattern=".*\s.*" placeholder="Tesztel Elek" required>
+                              <div class="invalid-feedback">
+                                  Kérlek, adj meg egy érvényes teljes nevet.
+                              </div>
+                          </div>
+                          <div class="col">
+                              <label for="email" class="form-label">Email:</label>
+                              <input type="email" id="email" name="email" class="form-control" placeholder="email@gmail.com" required>
+                              <div class="invalid-feedback">
+                                  Kérlek, adj meg egy érvényes email címet.
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+      
+                  <div class="mb-3">
+                      <div class="row">
+                          <div class="col">
+                              <label for="jelszo1" class="form-label">Jelszó:</label>
+                              <input type="password" id="jelszo1" name="jelszo1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{6,18}"
+                                  title="Legalább egy kis- és nagybetű, szám, speciális karakter, minimum 6, maximum 18 karakter" class="form-control" required>
+                              <div class="invalid-feedback">
+                                  Kérlek, adj meg egy érvényes jelszót.
+                              </div>
+                              </div>
+                          <div class="col">
+                              <label for="jelszo2" class="form-label">Jelszó ismétlés:</label>
+                              <input type="password" id="jelszo2" name="jelszo2" class="form-control" required>
+                              <div class="invalid-feedback">
+                                  A jelszó nem egyezik meg az első jelszóval.
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+      
+                  <div class="mb-3">
+                      <label for="szuletes" class="form-label">Születési dátum:</label>
+                      <input type="date" id="szuletes" name="szuletes" class="form-control" required>
+                      <div class="invalid-feedback">
+                          Kérlek, adj meg egy érvényes születési dátumot.
+                      </div>
+                  </div>
+      
+                  <div class="mb-3">
+                      <div class="row">
+                          <div class="col">
+                              <label for="telefon" class="form-label">Telefon:</label>
+                              <input type="text" id="telefon" name="telefon" class="form-control" required>
+                              <div class="invalid-feedback">
+                          Kérlek, adj meg egy érvényes telefonszámot.
+                      </div>
+                          </div>
+                          <div class="col">
+                              <label for="nem" class="form-label">Nem:</label>
+                              <select id="gender" name="nem" class="form-control" required>
+                                  <option value="" disabled selected>--Válassz--</option>
+                                  <option value="Férfi">Férfi</option>
+                                  <option value="Nő">Nő</option>
+                                  <option value="Egyéb">Egyéb</option>
+                              </select>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="mb-3">
+                      <div class="row">
+                          <div class="col">
+                              <label for="iranyito" class="form-label">Irányítószám:</label>
+                              <input type="number" id="iranyito" name="iranyito" pattern="\d{4}" class="form-control" required>
+                              <div class="invalid-feedback">
+                                  Kérlek, adj meg egy érvényes irányítószámot.
+                              </div>
+                          </div>
+                          <div class="col">
+                              <label for="varos" class="form-label">Település:</label>
+                              <input type="text" id="varos" name="varos" class="form-control" required>
+                              <div class="invalid-feedback">
+                                  Kérlek, adj meg egy érvényes települést.
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+      
+                  <div class="mb-3">
+                      <label for="cim" class="form-label">Lakcím:</label>
+                      <input type="text" id="cim" name="cim" class="form-control" required>
+                      <div class="invalid-feedback">
+                          Kérlek, adj meg egy érvényes lakcímet.
+                      </div>
+                  </div>
+      
+                  <div class="d-grid gap-2">
+                      <button type="button" class="btn btn-primary mb-3" onclick="registration()">Regisztráció</button>
+                      <button type="button" class="btn btn-danger mb-3" data-bs-dismiss="modal">Bezárás</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+      </div>
+    </div>
+ 
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="main.js"></script>
   </body>
 </html>

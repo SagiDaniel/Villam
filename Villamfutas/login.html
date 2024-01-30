@@ -1,0 +1,135 @@
+<div id="loginModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Bejelentkezés</h2>
+            <button type="button" class="btn-close" onclick="closeLoginModal()" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+            <div class="mb-3">
+                <label for="email"class="form-label">Email:</label>
+                <input type="email" id="emaillogin" name="emaillogin" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Jelszó:</label>
+                <input type="password" id="password" class="form-control" name="password" required><br>
+            </div>             
+                <button type="button" class="btn btn-primary mb-3" onclick="login()">Bejelentkezés</button>
+                <button type="button" class="btn btn-secondary mb-3" onclick="closeLoginModal()">Bezárás</button>
+                <a id="elfelejtett" href="">Jelszo</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="registrationModal">
+<div class="modal-content">
+    <div class="modal-header">
+        <h2>Regisztráció</h2>
+        <button type="button" class="btn-close" onclick="closeRegistrationModal()" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <form id="registrationForm" class="needs-validation" novalidate>
+            <div class="mb-3">
+                <div class="row">
+                    <div class="col">
+                        <label for="nev" class="form-label">Teljes név:</label>
+                        <input type="text" id="nev" name="nev" class="form-control" pattern=".*\s.*" placeholder="Tesztel Elek" required>
+                        <div class="invalid-feedback">
+                            Kérlek, adj meg egy érvényes teljes nevet.
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="email" class="form-label">Email:</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="email@gmail.com" required>
+                        <div class="invalid-feedback">
+                            Kérlek, adj meg egy érvényes email címet.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="row">
+                    <div class="col">
+                        <label for="jelszo1" class="form-label">Jelszó:</label>
+                        <input type="password" id="jelszo1" name="jelszo1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{6,18}"
+                            title="Legalább egy kis- és nagybetű, szám, speciális karakter, minimum 6, maximum 18 karakter" class="form-control" required>
+                        <div class="invalid-feedback">
+                            Kérlek, adj meg egy érvényes jelszót.
+                        </div>
+                        </div>
+                    <div class="col">
+                        <label for="jelszo2" class="form-label">Jelszó ismétlés:</label>
+                        <input type="password" id="jelszo2" name="jelszo2" class="form-control" required>
+                        <div class="invalid-feedback">
+                            A jelszó nem egyezik meg az első jelszóval.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="szuletes" class="form-label">Születési dátum:</label>
+                <input type="date" id="szuletes" name="szuletes" class="form-control" required>
+                <div class="invalid-feedback">
+                    Kérlek, adj meg egy érvényes születési dátumot.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="row">
+                    <div class="col">
+                        <label for="telefon" class="form-label">Telefon:</label>
+                        <input type="text" id="telefon" name="telefon" class="form-control" required>
+                        <div class="invalid-feedback">
+                    Kérlek, adj meg egy érvényes telefonszámot.
+                </div>
+                    </div>
+                    <div class="col">
+                        <label for="nem" class="form-label">Nem:</label>
+                        <select id="gender" name="nem" class="form-control" required>
+                            <option value="" disabled selected>--Válassz--</option>
+                            <option value="Férfi">Férfi</option>
+                            <option value="Nő">Nő</option>
+                            <option value="Egyéb">Egyéb</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="row">
+                    <div class="col">
+                        <label for="iranyito" class="form-label">Irányítószám:</label>
+                        <input type="number" id="iranyito" name="iranyito" min="1000" max="9999" class="form-control" required>
+                        <div class="invalid-feedback">
+                            Kérlek, adj meg egy érvényes irányítószámot.
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="varos" class="form-label">Település:</label>
+                        <input type="text" id="varos" name="varos" class="form-control" required>
+                        <div class="invalid-feedback">
+                            Kérlek, adj meg egy érvényes települést.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="cim" class="form-label">Lakcím:</label>
+                <input type="text" id="cim" name="cim" class="form-control" required>
+                <div class="invalid-feedback">
+                    Kérlek, adj meg egy érvényes lakcímet.
+                </div>
+            </div>
+
+            <div class="d-grid gap-2">
+                <button type="button" class="btn btn-primary mb-3" onclick="validateAndRegister()">Regisztráció</button>
+                <button type="button" class="btn btn-secondary mb-3" onclick="closeRegistrationForm()">Bezárás</button>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
