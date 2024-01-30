@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+    <title>Villam futok</title>
+   
+  </head>
+  <body class="p-2 m-2 border-5 bd-example m-0 border-0"> 
+    <!--navbar-->
+    <nav class=" p-3 navbar navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="main.html">Villám futók</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Villám futók</h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="main.html">Főoldal</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Útvonal</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Villáminfo
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item" href="info.html#vorosliderc">Vörös Lidérc 82</a></li>
+                    <li><a class="dropdown-item" href="info.html#gombvillam">Gömbvillám 31</a></li>
+                    <li><a class="dropdown-item" href="info.html#szikra">Szikra 14</a></li>
+                    <li><a class="dropdown-item" href="info.html#mennydorges">Mennydörgés 631</a></li> 
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="info.html">Info</a></li>
+                  </ul>
+                </li>
+              </ul>
+              <form class="d-flex  mt-3 container-fluid">
+              
+                <button type="button" class="btn btn-primary d-flex justify-content-start "  data-bs-toggle="modal" data-bs-target="#bejeletkezes">Bejelentezés</button> 
+                <button type="button" class="btn btn-secondary d-flex justify-content-end" data-bs-toggle="modal" data-bs-target="#regisztacio">Regisztráció</button>
+              
+              </form>
+            </div>
+          </div>
+        </div>
+    </nav>
+     <!--login-->
+     <div class="modal" id="bejeletkezes">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title">Bejelentkezés</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="email"class="form-label">Email:</label>
+                <input type="email" id="emaillogin" name="emaillogin" class="form-control" required>  
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Jelszó:</label>
+                <input type="password" id="password" class="form-control" name="password" required>
+              </div>   
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary mb-3" onclick="login()">Bejelentkezés</button>
+            <button type="button" class="btn btn-danger mb-3" data-bs-dismiss="modal">Bezárás</button>
+          </div>
+        </div>
+      </div>
+     </div>
+     <!--registration-->
+     <div class="modal" id="regisztacio">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+              <h2>Regisztráció</h2>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+              <form id="registrationForm" class="needs-validation" novalidate>
+                  <div class="mb-3">
+                      <div class="row">
+                          <div class="col">
+                              <label for="nev" class="form-label">Teljes név:</label>
+                              <input type="text" id="nev" name="nev" class="form-control" pattern=".*\s.*" placeholder="Tesztel Elek" required>
+                              <div class="invalid-feedback">
+                                  Kérlek, adj meg egy érvényes teljes nevet.
+                              </div>
+                          </div>
+                          <div class="col">
+                              <label for="email" class="form-label">Email:</label>
+                              <input type="email" id="email" name="email" class="form-control" placeholder="email@gmail.com" required>
+                              <div class="invalid-feedback">
+                                  Kérlek, adj meg egy érvényes email címet.
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+      
+                  <div class="mb-3">
+                      <div class="row">
+                          <div class="col">
+                              <label for="jelszo1" class="form-label">Jelszó:</label>
+                              <input type="password" id="jelszo1" name="jelszo1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{6,18}"
+                                  title="Legalább egy kis- és nagybetű, szám, speciális karakter, minimum 6, maximum 18 karakter" class="form-control" required>
+                              <div class="invalid-feedback">
+                                  Kérlek, adj meg egy érvényes jelszót.
+                              </div>
+                              </div>
+                          <div class="col">
+                              <label for="jelszo2" class="form-label">Jelszó ismétlés:</label>
+                              <input type="password" id="jelszo2" name="jelszo2" class="form-control" required>
+                              <div class="invalid-feedback">
+                                  A jelszó nem egyezik meg az első jelszóval.
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+      
+                  <div class="mb-3">
+                      <label for="szuletes" class="form-label">Születési dátum:</label>
+                      <input type="date" id="szuletes" name="szuletes" class="form-control" required>
+                      <div class="invalid-feedback">
+                          Kérlek, adj meg egy érvényes születési dátumot.
+                      </div>
+                  </div>
+      
+                  <div class="mb-3">
+                      <div class="row">
+                          <div class="col">
+                              <label for="telefon" class="form-label">Telefon:</label>
+                              <input type="text" id="telefon" name="telefon" class="form-control" required>
+                              <div class="invalid-feedback">
+                          Kérlek, adj meg egy érvényes telefonszámot.
+                      </div>
+                          </div>
+                          <div class="col">
+                              <label for="nem" class="form-label">Nem:</label>
+                              <select id="gender" name="nem" class="form-control" required>
+                                  <option value="" disabled selected>--Válassz--</option>
+                                  <option value="Férfi">Férfi</option>
+                                  <option value="Nő">Nő</option>
+                                  <option value="Egyéb">Egyéb</option>
+                              </select>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="mb-3">
+                      <div class="row">
+                          <div class="col">
+                              <label for="iranyito" class="form-label">Irányítószám:</label>
+                              <input type="number" id="iranyito" name="iranyito" pattern="\d{4}" class="form-control" required>
+                              <div class="invalid-feedback">
+                                  Kérlek, adj meg egy érvényes irányítószámot.
+                              </div>
+                          </div>
+                          <div class="col">
+                              <label for="varos" class="form-label">Település:</label>
+                              <input type="text" id="varos" name="varos" class="form-control" required>
+                              <div class="invalid-feedback">
+                                  Kérlek, adj meg egy érvényes települést.
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+      
+                  <div class="mb-3">
+                      <label for="cim" class="form-label">Lakcím:</label>
+                      <input type="text" id="cim" name="cim" class="form-control" required>
+                      <div class="invalid-feedback">
+                          Kérlek, adj meg egy érvényes lakcímet.
+                      </div>
+                  </div>
+      
+                  <div class="d-grid gap-2">
+                      <button type="button" class="btn btn-primary mb-3" onclick="registration()">Regisztráció</button>
+                      <button type="button" class="btn btn-danger mb-3" data-bs-dismiss="modal">Bezárás</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+      </div>
+    </div>
+    <div class="container-main" style="display: flex; flex-direction: column">
+        <!-- Navigation Menu -->    
+        <div class="container-fluid info-container" xmlns="http://www.w3.org/1999/html">
+            <div class="row info-row">
+                <h4 class="info-firstlines walter-turncoat">Történet</h4>
+                <p class="info-texts">
+                    Aki hallott már a 2014-ben indult VérKörről,
+                    az pontosan tudja, mi fán terem az instant túra/terepfutás.
+                    Már az első alkalommal, mikor találkoztunk a nagyszerű ötlettel, megszületett egy helyi kör terve itt, a Gödöllői-domságban.
+                    És bár sokaig csak álom maradt, most végre megalkothattunk mi is ezt a környékünket bemutatni igyekvő
+                    kihívást, ráadásul két távon. Nagyon reméljük, hogy minden induló megtalálja az útvonalban azokat a szépségeket,
+                    amikre mi olyan büszkék vagyunk. :)
+                    A körök elnevezésének alapötlete a hosszútáv útvonalának alakjából született, ami térképen megnézve valóban
+                    egy villámhoz hasonló.
+                    Ezek után jöhetett a két táv külön elnevezése. Különleges villámtípusok mellett döntöttünk.
+                    A 82 km-es távot Vörös Lidércnek neveztük, mert annak, aki teljesíti pont olyan ritka élményben lesz része,
+                    mintha meglátna egy <a class="info-links" href="https://hu.wikipedia.org/wiki/V%C3%B6r%C3%B6s_lid%C3%A9rc" target="_blank">Vörös Lidércet</a>.
+                    A 31 km-es táv elnevezésekor a <a href="https://hu.wikipedia.org/wiki/G%C3%B6mbvill%C3%A1m" target="_blank">Gömbvillám</a> névre esett a választásunk,
+                    hiszen egy szép kis kerek kört tehet meg, aki erre vállalkozik.
+                </p>
+            </div>
+            
+            <div class="row info-row">
+                <h4 class="info-firstlines walter-turncoat">Általános tudnivalók</h4>
+                <p class="info-texts">
+                    A Villámkör egy instant túra és terepfutás két távon, amelyek egyénileg, bármikor teljesíthetőek.
+                    Az útvonalak turistajelzéseken haladnak.
+                    A teljesítést az útvonalakon elhelyezett ellenőrző (QR) kódok segítségével lehet igazolni.
+                    Ehhez egy okostelefonra és mobilinternet hozzáférésre van szükség. Két módon teljesíthetőek:
+                    gyalog és futva.
+                    A teljesítés módjától függően változik a szintidő.<br><br>
+                    A túrán ellátás nincs, minden felszerelést magaddal kell vinned. Vízvételi lehetőségek: Isaszeg,
+                    Gödöllő, Domonyvölgy. Frissíthet bárki, bárhol.
+                    Gyalogos és kerékpáros kísérő is megengedett.
+                    <br><br>
+                    A rajt és cél helyszíne a péceli piactéren található, a 42k.hu üzletének ablakában. Megközelítése:
+                    Budapest, Örs vezér teréről a 169E jelű BKK busszal – Ráday Gedeon tér megálló vagy vonattal a
+                    Keleti pályaudvarról induló Hatvani szerelvénnyel
+                    és ezt követően gyalog vagy a 169E busszal egy megálló a Ráday Gedeon tér. Ha autóval érkezel, a piactér
+                    mellett mindig áll rendelkezésre szabad, ingyenes parkoló.
+                    <br><br>
+                    A QR kódokat fákra helyeztük. A fákra szemmagasságban fluoreszkáló sárga négyszögeket festettünk, melyek
+                    jól látszanak a turistautakról.
+                    Minden ponton két azonos kód található biztonsági okokból (ha az egyiket ellopnák).
+                    Az egyik kód a sárga négyszöggel megjelölt fán a másik pedig tőle 10 méteres távolságon belül
+                    egy másik fán található.
+                    A kódok leolvasásakor a rendszer regisztrálja a pontos időt és jelzi az átlagsebességet,
+                    kiírja a megtett távot és szintemelkedést,
+                    a távolságot és szintemelkedést a következő pontig, valamint
+                    hogy a következő QR kódig milyen jelzéseket kell követned.
+                </p>
+            </div>
+    
+            <div class="row info-row">
+                <h4 class="info-firstlines walter-turncoat"><span class="red" id="vorosliderc">Vörös Lidérc 82</span> tudnivalók</h4>
+                <p class="info-texts">
+                    A Vörös Lidérc 82 km hosszan vezet végig a Gödöllői-dombságon. Pécelről indulva érinti Katonapallagot és
+                    az egyedülálló isaszegi Öreg-templomot, majd Gödöllőn és Máriabesnyőn átkelve a Gudra-hegy irányából felkapaszkodik
+                    a dombság legmagasabb pontjára a Margitára (344m). Ezt követően kalandos útvonalon, útba ejtve az
+                    Erzsébet-pihenőt megkerüli a Gödöllői Erdészeti Arborétumot. Végül meglepően hullámzó ösvényen tér vissza Pécel
+                    csendes völgyébe. Az útvonalon 9 darab QR kódot kell beolvasni a megfelelő sorrendben.
+                    <br>
+                    <br>
+                    <strong>Táv</strong>: 83,1 km<br>
+                    <strong>Szinemelkedés</strong>: 1440m
+                </p>
+                <br>
+                <div class="table-responsive-md deadline-table">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr class="table-top">
+                                <th scope="col" colspan="2">Szintidők</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Gyalog</td>
+                                <td>20 óra</td>
+                            </tr>
+                            <tr>
+                                <td>Futva</td>
+                                <td>13 óra</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h5><a href="/storage/docs/Vorosliderc_szoveges.pdf" target="_blank">A szöveges itinert itt találod.</a></h5>
+                </div>
+            </div>
+        </div>
+    
+        <div class="container-fluid church-bg">
+            <div class="row info-row">
+                <h4 class="info-firstlines walter-turncoat"><span class="yellow" id="gombvillam">Gömbvillám 31</span> tudnivalók</h4>
+                <p class="info-texts">
+                    A Gömbvillám egy 31 km-es kört tesz meg Pécel és Isaszeg körül. Pécelről indulva érinti Bajtemetést
+                    és a volt szovjet radarbázis maradványait. Tovább haladva Katonapallagon át útba ejti
+                    az egyedülálló isaszegi Öreg-templomot. Ezt követően kalandos, hullámzó ösvényen tér vissza Pécel
+                    csendes völgyébe. Az útvonalon 4 darab QR kódot kell beolvasni a megfelelő sorrendben.
+                    <br>
+                    <br>
+                    <strong>Táv</strong>: 31,4 km<br>
+                    <strong>Szinemelkedés</strong>: 750m
+                </p>
+                <br>
+                <div class="table-responsive-md deadline-table">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr class="table-top">
+                            <th scope="col" colspan="2">Szintidők</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Gyalog</td>
+                            <td>8 óra 30 perc</td>
+                        </tr>
+                        <tr>
+                            <td>Futva</td>
+                            <td>5 óra</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <h5><a href="/storage/docs/Gombvillam_szoveges.pdf" target="_blank">A szöveges itinert itt találod.</a></h5>
+                </div>
+            </div>
+    
+    
+            <div class="container-fluid church-bg">
+                <div class="row info-row">
+                    <h4 class="info-firstlines walter-turncoat"><span style="color: #ca1f7b" id="szikra">Szikra 14</span> tudnivalók</h4>
+                    <p class="info-texts">
+                        A Szikra egy 14 km-es kört tesz meg a Pécel környéki erdőkben. Pécelről indulva érinti Bajtemetést
+                        és a volt szovjet radarbázis maradványait. Technikás, egynyomos, hullámzó ösvényen tér vissza Pécel
+                        városába, ahol bemutatja a Ráday-kastélyt is. Az útvonalon 5 darab QR kódot kell beolvasni a megfelelő sorrendben.
+                        <br>
+                        <br>
+                        <strong>Táv</strong>: 14,2 km<br>
+                        <strong>Szinemelkedés</strong>: 420m
+                    </p>
+                    <br>
+                    <div class="table-responsive-md deadline-table">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr class="table-top">
+                                <th scope="col" colspan="2">Szintidők</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Villámgyors futó</td>
+                                <td>1 óra 30 perc</td>
+                            </tr>
+                            <tr>
+                                <td>Futó</td>
+                                <td>2 óra 15 perc</td>
+                            </tr>
+                            <tr>
+                                <td>Gyalog</td>
+                                <td>4 óra</td>
+                            </tr>
+                            <tr>
+                                <td>Családi</td>
+                                <td>24 óra</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <h5><a href="/storage/docs/Szikra_itiner.pdf" target="_blank">A szöveges itinert itt találod.</a></h5>
+                    </div>
+                </div>
+    
+    
+    
+                <div class="container-fluid church-bg">
+                    <div class="row info-row">
+                        <h4 class="info-firstlines walter-turncoat"><span style="color: #948990" id="mennydorges">Mennydörgés 63</span> tudnivalók</h4>
+                        <p class="info-texts">
+                            A Mennydörgés azok számára készült, akik nem elégszenek meg egy körrel. Teljesítéséhez
+                            2 Gömbvillámot kell teljesíteni közvetlenül egymás után. Ha kíváncsi vagy mennyit változik a táj a következő körben, ez a te választásod!
+                            A teljesítésért járó éremből befolyó összeget teljes egészében az útvonalat övező erdők megtisztítására fordítjuk.
+                            <br>
+                            <br>
+                            <strong>Táv</strong>: 63,0 km<br>
+                            <strong>Szinemelkedés</strong>: 1500m
+                        </p>
+                        <br>
+                        <div class="table-responsive-md deadline-table">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr class="table-top">
+                                    <th scope="col" colspan="2">Szintidők</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>Gyalog</td>
+                                    <td>17 óra</td>
+                                </tr>
+                                <tr>
+                                    <td>Futva</td>
+                                    <td>10 óra</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="row info-row">
+                <h4 class="info-firstlines walter-turncoat"><span>Nevezés</span></h4>
+                <p class="info-texts">
+                    Ha úgy döntöttél, szeretnél elindulni a Villámkörön, először <a href="/regisztracio">regisztrálj</a> az oldalra,
+                    majd a <a href="/bejelentkezes">nevezést</a> követően akár már azonnal indulhatsz is a kiválasztott távon.
+                    Amennyiben mégsem indulnál rögtön, nevezésed egy hónapig fennmarad, annak leteltével újra nevezned szükséges.
+                    <br>
+                </p>
+            </div>
+            <div class="row info-row">
+                <h4 class="info-firstlines walter-turncoat"><span>Technikai info</span></h4>
+                <p class="info-texts">
+                   A kihívás teljesítéséhez először is két dologra lesz szükséged:<br><br>
+    
+                    1. Egy okostelefonra (vagy akár tabletre) amelyen van mobilinterenet hozzáférés<br>
+                    2. Egy QR kód olvasó alkalmazásra, amennyiben Iphone-od van. Ha androidos készülékkel
+                    érkezel, használhatod a villámkör saját, beépített qr-kód olvasóját,
+                    melyet a villamkor.hu/qr oldalon érhetsz el. FONTOS viszont,
+                    hogy a biztonság kedvéért ebben az esetben is legyen telepítve offline QR-kód olvasó applikációd,
+                    amely esetleges térerőhiány esetén a leggyorsabb megoldás lehet.
+                    Ha valamiért mégsem sikerül a kódot beolvasni, menj el az első olyan helyig, ahol van térerőd és hívd fel az oldalunkon található telefonszámot!
+                    Semmiképpen ne menj tovább a következő kódig, mert azt a rendszer már nem fogja elfogadni, mivel az előzőt kihagytad.<br>
+                </p>
+            </div>
+            <div class="row info-row">
+                <h4 class="info-firstlines walter-turncoat"><span>Teljesítés</span></h4>
+                <p class="info-texts">
+                    <strong>A teljesítés menete:</strong><br>
+                    Miután regisztráltál az oldalra és neveztél, jól
+                    jegyezd meg az általad megadott e-mail címet és jelszót, hogy bármikor újra bejelentkezhess.
+                    Ez azért fontos, mert a rendszer ez alapján ismer fel téged és tudja kezelni a teljesítésedet.
+                    Tehát, amint a rajt QR kódhoz érsz, ha be vagy jelentkezve, olvasd le a kódot és már kapod is az információkat
+                    valamint mi is rögzítjük, hogy ott vagy. Az összes többi QR kódnál is ugyanennyit kell tenned. Ha nem vagy bejelentkezve, tedd meg és beolvasás után már
+                    indulhatsz is tovább.<br><br>
+                    Ahhoz, hogy sikeres teljesítő lehess, a megadott útvonalon rövidítés nélkül végig kell menned, a QR
+                    kódokat sorrendben beolvasva, a szabályokat betartva, a választott szintidőn belül. A Vérkörhoz hasonlóan nálunk is szigorúbbak
+                    a szabályok, így az egyenlő elbírálás érdekében gps track alapján a teljesítéseket nem tudjuk elfogadni.
+                    A szabályzatot <a href="/storage/docs/Villamkor_szabalyzat.pdf">itt</a> tudod elolvasni.
+                    <br>
+                </p>
+            </div>
+            <div class="row info-row">
+                <h4 class="info-firstlines walter-turncoat" id="rec-equip"><span>Ajánlott felszerelés</span></h4>
+                <ul>
+                    <li>Okostelefon mobilinternet hozzáféréssel</li>
+                    <li>A választott útvonal itinere kinyomtatva és/vagy letöltve mobilra</li>
+                    <li>A Gödöllői-dombság turista térképe (Szarvas 2017)</li>
+                    <li>GPS track letöltve és telepítve (mobilon, órán)</li>
+                    <li>Elegendő kulacs vagy flakonok folyadékkal töltve</li>
+                    <li>Szükséges mennyiségű étel</li>
+                    <li>Fejlámpa</li>
+                    <li>Power bank az eszközök feltöltéséhez</li>
+                    <li>Készpénz</li>
+                    <li>Fényképes igazolvány</li>
+                    <li>Vízálló dzseki vagy kabát</li>
+                </ul>
+            </div>
+            <div class="row info-row">
+                <h4 class="info-firstlines walter-turncoat"><span>Nevezési díj</span></h4>
+                <p class="info-texts">
+                    A Villámkörön nevezési díj nincsen. Teljesítési díj van.
+                    Csak utólag, sikeres teljesítés esetén kell fizetned amiért élményt, időmérést és egyedi érmet kapsz cserébe.
+                    Teljesítési díj érem esetén: Vörös Lidérc érem - 4500 Ft, Gömbvillám érem- 3500 Ft, Szikra érem -2900 Ft, Mennydörgés érem - 4200 Ft
+                    <br><br>
+    
+                    Amennyiben nem kérsz érmet,
+                    válaszd az Öko-teljesítői díjat, amely esetben a rendszerhaszálatért,
+                    támogatásért (telefonos felügyelet és segélynyújtás) és időeredményed megjelenítéséért 1000 Ft hozzájárulást kérünk.
+                    Ezzel segíted rendszerünk fejlesztését és a folyamatos terepi munkák (festés, karbantartás) finanszírozását.
+                    <br>
+                </p><br>
+                <div class="img-container">
+                    <img src="/assets/images/medals.jpg" class="img-fluid picture">
+                </div>
+            </div>
+            <div class="row info-row">
+                <h4 class="info-firstlines walter-turncoat"><span>Relikviák és emléktárgyak</span></h4>
+                <p class="info-texts">
+                   Ha tetszett a Villámkör és szeretnél egy szuper Villámkörös pólóval büszkélkedni, lehetőséged van
+                    a 42k.hu által gyártott pólót vásárolni. Emellett Villámkörös bögrét, karszárat és egyéb emléktárgyakat is tudsz venni.
+                    Ezekre az igényt a befutást követően jelezd nálunk.
+                    <br>
+                </p><br>
+                <div class="img-container">
+                    <img src="/assets/images/42k.jpg" class="img-fluid picture relic-pic">
+                </div>
+            </div>
+    
+        </div>
+    
+    
+    <!--- Footer -->
+        <footer>
+            <div class="container-fluid">
+                <div class="row text-center">
+                    <div class="col-12 footer-text1">
+                        <h5 style="color: white;">Villámkör</h5>
+                        <div>info@villamkor.hu</div>
+                        <p class="ptfk"><a target="_blank" href="https://www.facebook.com/ptfk2/" class="link link--ilin"><span></span><span>Péceli Természetjáró és Futó Klub</span></a></p>
+                        <p><a target="_blank" href="http://www.42k.hu/" class="link link--ilin"><span></span><span>42k.hu</span></a></p>
+                        <div class="footer-basic">
+    
+                            <div class="social">
+                                <!-- <a href="https://www.instagram.com"><i class="icon ion-social-instagram"></i></a> -->
+                                <a href="https://www.facebook.com/villamkor/"><i class="icon ion-logo-facebook"></i></a>
+                                <a href="mailto:info@villamkor.hu"><i class="icon ion-md-mail"></i></a>
+                                <a href="tel:+36705103344"><i class="icon ion-ios-call"></i></a>
+                            </div>
+                            <ul class="list-inline">
+                                <li class="list-inline-item"><a target="_blank" href="/" class="link link--ilin"><span></span><span>Kezdőlap</span></a></li>
+                                <li class="list-inline-item"><i class="icon ion-md-flash" style="color: rgb(255, 168, 0)"></i></li>
+                                <li class="list-inline-item"><a target="_blank" href="/adatkezeles" class="link link--ilin"><span></span><span>Adatkezelés</span></a></li>
+                                <li class="list-inline-item"><i class="icon ion-md-flash" style="color: rgb(255, 168, 0)"></i></li>
+                                <li class="list-inline-item"><a target="_blank" href="/storage/docs/Villamkor_szabalyzat.pdf" class="link link--ilin"><span></span><span>Szabályzat</span></a></li>
+                                <li class="list-inline-item"><i class="icon ion-md-flash" style="color: rgb(255, 168, 0)"></i></li>
+                                <li class="list-inline-item"><a target="_blank" href="/storage/docs/Vorosliderc_szoveges.pdf" class="link link--ilin"><span>Vörös Lidérc</span> <span>itiner</span></a></li>
+                                <li class="list-inline-item"><i class="icon ion-md-flash" style="color: rgb(255, 168, 0)"></i></li>
+                                <li class="list-inline-item"><a target="_blank" href="/storage/docs/Gombvillam_szoveges.pdf" class="link link--ilin"><span>Gömbvillám</span> <span>itiner</span></a></li>
+                            </ul>
+                            <p class="copyright">villamkor.hu © 2019 - 2024</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="main.js"></script>
+  </body>
+</html>
